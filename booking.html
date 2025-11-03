@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay | Paradise Retreat Resort</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .booking-hero {
+            background: url('https://images.unsplash.com/photo-1555545229-28c11e7399ec') center/cover no-repeat;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .booking-hero h1 {
+            position: relative;
+            z-index: 2;
+            color: var(--color-white);
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .booking-content {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .booking-form-container {
+            flex: 2;
+            padding: 30px;
+            background-color: var(--color-white);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .summary-container {
+            flex: 1;
+            padding: 30px;
+            background-color: var(--color-beige);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            min-width: 300px;
+        }
+        
+        .booking-form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: 600;
+            color: var(--color-teal);
+        }
+
+        .booking-form input[type="text"], 
+        .booking-form input[type="email"], 
+        .booking-form input[type="number"], 
+        .booking-form input[type="date"], 
+        .booking-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row > * {
+            flex: 1;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: -15px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        /* Confirmation Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .popup-content {
+            background-color: var(--color-white);
+            margin: 15% auto;
+            padding: 40px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: fadeIn 0.3s;
+        }
+        
+        .popup-content h2 {
+            color: var(--color-teal);
+            margin-bottom: 20px;
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 992px) {
+            .booking-content {
+                flex-direction: column;
+            }
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Paradise Retreat</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="rooms.html">Rooms & Suites</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="booking.html" class="active">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="booking-hero">
+            <h1>Reserve Your Tropical Getaway</h1>
+        </section>
+
+        <section class="container" data-aos="fade-up">
+            <div class="booking-content">
+                
+                <div class="booking-form-container">
+                    <h2 class="section-title" style="text-align: left; margin-top: 0;">Reservation Details</h2>
+                    <form id="booking-form" class="booking-form">
+                        
+                        <label for="name">Full Name*</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                        
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" name="email" required placeholder="name@example.com">
+
+                        <div class="form-row">
+                            <div>
+                                <label for="check-in">Check-in Date*</label>
+                                <input type="date" id="check-in" name="check-in" required>
+                                <span id="check-in-error" class="error-message"></span>
+                            </div>
+                            <div>
+                                <label for="check-out">Check-out Date*</label>
+                                <input type="date" id="check-out" name="check-out" required>
+                                <span id="check-out-error" class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div>
+                                <label for="room-type">Room Type*</label>
+                                <select id="room-type" name="room-type" required>
+                                    <option value="">Select a Room</option>
+                                    <option value="standard" data-price="250">Standard Ocean View ($250/n)</option>
+                                    <option value="deluxe" data-price="450">Deluxe Balcony Suite ($450/n)</option>
+                                    <option value="suite" data-price="600">Honeymoon Suite ($600/n)</option>
+                                    <option value="villa" data-price="950">Private Beach Villa ($950/n)</option>
+                                </select>
+                                <span id="room-type-error" class="error-message"></span>
+                            </div>
+                            <div>
+                                <label for="guests">Number of Guests*</label>
+                                <input type="number" id="guests" name="guests" min="1" max="10" value="2" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn" style="background-color: var(--color-teal); color: var(--color-white); width: 100%; margin-top: 20px;">
+                            Confirm Booking
+                        </button>
+                    </form>
+                </div>
+
+                <div class="summary-container">
+                    <h2 style="color: var(--color-teal); margin-bottom: 25px;">Booking Summary</h2>
+                    <p style="margin-bottom: 10px;">**Room Type:** <span id="summary-room-type">N/A</span></p>
+                    <p style="margin-bottom: 10px;">**Check-in:** <span id="summary-check-in">N/A</span></p>
+                    <p style="margin-bottom: 10px;">**Check-out:** <span id="summary-check-out">N/A</span></p>
+                    <p style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc;">**Nights:** <span id="summary-nights">0</span></p>
+                    
+                    <h3 style="color: var(--color-dark); margin-bottom: 15px;">Total Estimated Cost:</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-gold); text-align: right;">
+                        <span id="total-cost">$0</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">*Taxes and fees are not included in this estimate.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="booking-popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <i class="fas fa-check-circle fa-4x" style="color: var(--color-teal); margin-bottom: 20px;"></i>
+            <h2>Booking Request Received!</h2>
+            <p>Thank you, **<span id="confirm-name"></span>**.</p>
+            <p>Your reservation request for the **<span id="confirm-room"></span>** from **<span id="confirm-checkin"></span>** to **<span id="confirm-checkout"></span>** has been successfully submitted.</p>
+            <p style="margin-top: 20px;">A final confirmation and invoice will be sent to **<span id="confirm-email"></span>** shortly.</p>
+            <a href="index.html" class="btn" style="margin-top: 30px; background-color: var(--color-gold);">Return to Home</a>
+        </div>
+    </div>
+    
+    <a href="booking.html" class="floating-btn" title="Book Your Stay Now"><i class="fas fa-calendar-alt"></i></a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section"><h4>Paradise Retreat</h4><p>Your journey to relaxation begins here...</p></div>
+                <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="rooms.html">Rooms & Suites</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+                <div class="footer-section"><h4>Contact Us</h4><p>123 Resort Blvd, Paradise Island</p><p>Email: <a href="mailto:info@paradiseretreat.com">info@paradiseretreat.com</a></p><p>Phone: +1 (555) 123-4567</p></div>
+                <div class="footer-section"><h4>Follow Us</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-tripadvisor"></i></a></div></div>
+            </div>
+            <div class="footer-bottom">&copy; 2025 Paradise Retreat Resort. All Rights Reserved. | Designed with HTML, CSS & JS</div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>

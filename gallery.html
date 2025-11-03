@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Paradise Retreat Resort</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .gallery-hero {
+            background: url('https://images.unsplash.com/photo-1543789392-f0490793132e') center/cover no-repeat;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery-hero h1 {
+            position: relative;
+            z-index: 2;
+            color: var(--color-white);
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:nth-child(2n) { /* Simple way to simulate masonry-like effect with varying height */
+            grid-row: span 2;
+        }
+
+        .video-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            display: block;
+            width: auto;
+            max-height: 80vh;
+            max-width: 100%;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--color-white);
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Paradise Retreat</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="rooms.html">Rooms & Suites</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="gallery-hero">
+            <h1>Moments in Paradise</h1>
+        </section>
+
+        <section class="container" data-aos="fade-up">
+            <h2 class="section-title">Photo Showcase</h2>
+            <div class="gallery-grid" id="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in" data-src="https://th.bing.com/th/id/OIP.msrwbnb3qBTMi3SfGBjYgAHaEK?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3">
+                    <img src="https://th.bing.com/th/id/OIP.msrwbnb3qBTMi3SfGBjYgAHaEK?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Resort Pool" loading="lazy">
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="50" data-src="https://th.bing.com/th/id/OIP.7R2m15k87PZJ4RxKbnL3YAHaEK?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3">
+                    <img src="https://th.bing.com/th/id/OIP.7R2m15k87PZJ4RxKbnL3YAHaEK?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Beach Sunset" loading="lazy">
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100" data-src="https://www.fourseasons.com/alt/img-opt/~70.1530.0,0000-102,1896-2999,4527-1687,1922/publish/content/dam/fourseasons/images/web/AIL/AIL_149_original.jpg">
+                    <img src="https://www.fourseasons.com/alt/img-opt/~70.1530.0,0000-102,1896-2999,4527-1687,1922/publish/content/dam/fourseasons/images/web/AIL/AIL_149_original.jpg" alt="Dining View" loading="lazy">
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="150" data-src="https://i.pinimg.com/originals/ff/f7/4d/fff74dc2a787fe3b36abab0390151b6a.jpg">
+                    <img src="https://i.pinimg.com/originals/ff/f7/4d/fff74dc2a787fe3b36abab0390151b6a.jpg" alt="Spa Interior" loading="lazy">
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200" data-src="https://th.bing.com/th/id/OIP.3cwKQpTNr7RR01rxLg_IJgHaEp?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3">
+                    <img src="https://th.bing.com/th/id/OIP.3cwKQpTNr7RR01rxLg_IJgHaEp?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Room Bed" loading="lazy">
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="250" data-src="https://th.bing.com/th/id/R.95739c74866e806ca8dca41672ae5a33?rik=c3cNnRNLZp1Uzw&riu=http%3a%2f%2fbrabbucontract.com%2finspirations-and-ideas%2fwp-content%2fuploads%2f2019%2f09%2fThayer-Lodging-Lounge-Bar-1.jpg&ehk=SvezNsa1ib9Ks%2blqYsGMIcsZ2zhA8EOuO%2bXNGZ%2bLRU4%3d&risl=&pid=ImgRaw&r=0">
+                    <img src="https://th.bing.com/th/id/R.95739c74866e806ca8dca41672ae5a33?rik=c3cNnRNLZp1Uzw&riu=http%3a%2f%2fbrabbucontract.com%2finspirations-and-ideas%2fwp-content%2fuploads%2f2019%2f09%2fThayer-Lodging-Lounge-Bar-1.jpg&ehk=SvezNsa1ib9Ks%2blqYsGMIcsZ2zhA8EOuO%2bXNGZ%2bLRU4%3d&risl=&pid=ImgRaw&r=0" alt="Lounge Area" loading="lazy">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="Enlarged Image">
+        </div>
+    </div>
+    
+    <a href="booking.html" class="floating-btn" title="Book Your Stay Now"><i class="fas fa-calendar-alt"></i></a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section"><h4>Paradise Retreat</h4><p>Your journey to relaxation begins here...</p></div>
+                <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="rooms.html">Rooms & Suites</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+                <div class="footer-section"><h4>Contact Us</h4><p>123 Resort Blvd, Paradise Island</p><p>Email: <a href="mailto:info@paradiseretreat.com">info@paradiseretreat.com</a></p><p>Phone: +1 (555) 123-4567</p></div>
+                <div class="footer-section"><h4>Follow Us</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-tripadvisor"></i></a></div></div>
+            </div>
+            <div class="footer-bottom">&copy; 2025 Paradise Retreat Resort. All Rights Reserved. | Designed with HTML, CSS & JS</div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

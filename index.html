@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradise Retreat Resort | Welcome to Paradise</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Home Page Specific Styles */
+        .hero {
+            height: 100vh;
+            background: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/656411102.jpg?k=7e1185b2b5cee354505b239d9266d7b4e14922dcc32f66404c06554bacdbac1a&o=') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            color: var(--color-white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: transparent; /* Removed dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--color-white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--color-white);
+        }
+
+        /* Highlights Section */
+        .highlights {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        /* Featured Rooms Section */
+        .featured-rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Testimonials Carousel */
+        .testimonials {
+            background-color: var(--color-white);
+            text-align: center;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            display: none;
+            padding: 40px;
+            font-style: italic;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background-color: var(--color-beige);
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-slide p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-slide .author {
+            font-weight: 600;
+            color: var(--color-teal);
+            font-style: normal;
+        }
+
+        /* Parallax Section */
+        .parallax-section {
+            min-height: 400px;
+            background: url('https://www.napilikai.com/wp-content/uploads/property-map.jpg') center/cover no-repeat;
+            background-attachment: fixed; /* This creates the parallax effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+        }
+
+        .parallax-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: transparent; /* Removed dark overlay */
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Paradise Retreat</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="rooms.html">Rooms & Suites</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 data-aos="fade-up">Welcome to Paradise Retreat Resort</h1>
+                <p data-aos="fade-up" data-aos-delay="200">Your unforgettable tropical escape awaits.</p>
+                <a href="booking.html" class="btn" data-aos="fade-up" data-aos-delay="400">Book Now</a>
+            </div>
+        </section>
+
+        <section class="highlights container" data-aos="fade-in">
+            <h2 class="section-title">Discover Your Paradise</h2>
+            <p style="max-width: 800px; margin: 0 auto 40px;">Nestled on pristine white sands, Paradise Retreat Resort offers unparalleled luxury, exquisite dining, and a deep connection with nature. From our award-winning spa to our secluded villas, every detail is crafted for your utmost relaxation and pleasure.</p>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                <div style="width: 250px; margin: 20px; text-align: left;">
+                    <i class="fas fa-spa fa-3x" style="color: var(--color-teal); margin-bottom: 15px;"></i>
+                    <h3>World-Class Spa</h3>
+                    <p>Rejuvenate your body and mind with our signature treatments.</p>
+                </div>
+                <div style="width: 250px; margin: 20px; text-align: left;">
+                    <i class="fas fa-utensils fa-3x" style="color: var(--color-teal); margin-bottom: 15px;"></i>
+                    <h3>Exquisite Dining</h3>
+                    <p>Savor gourmet cuisine with breathtaking ocean views.</p>
+                </div>
+                <div style="width: 250px; margin: 20px; text-align: left;">
+                    <i class="fas fa-swimmer fa-3x" style="color: var(--color-teal); margin-bottom: 15px;"></i>
+                    <h3>Infinity Pools</h3>
+                    <p>Dive into our stunning pools that blend into the horizon.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="parallax-section">
+            <!-- This section is now purely for the parallax background image -->
+        </section>
+
+        <section class="container" style="background-color: var(--color-beige); padding-top: 100px; padding-bottom: 100px;" data-aos="fade-up">
+            <h2 class="section-title">Featured Rooms</h2>
+            <div class="featured-rooms-grid">
+                <div class="card" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461" alt="Deluxe Room" class="card-img">
+                    <div class="card-content">
+                        <h3>Deluxe Ocean View</h3>
+                        <p>Spacious, modern design with stunning sea views.</p>
+                        <a href="rooms.html" class="btn" style="background-color: var(--color-teal); color: var(--color-white); padding: 8px 20px; margin-top: 15px;">View Details</a>
+                    </div>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://assets.minorhotels.com/image/upload/q_auto,f_auto,c_limit,w_1045/media/minor/nh/images/nh-maldives-kuda-rah-resort/02_rooms__ok1/01_beach_villa_with_private_pool/nh_maldives_kuda_rah_resort_beach_villa_with_-private_pool_exterior_944x510_2.jpg" alt="Private Villa" class="card-img">
+                    <div class="card-content">
+                        <h3>Private Beach Villa</h3>
+                        <p>Your own secluded haven with direct beach access.</p>
+                        <a href="rooms.html" class="btn" style="background-color: var(--color-teal); color: var(--color-white); padding: 8px 20px; margin-top: 15px;">View Details</a>
+                    </div>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://rosycruise.com/wp-content/uploads/2020/06/Vip_1-scaled.jpg" alt="Honeymoon Suite" class="card-img">
+                    <div class="card-content">
+                        <h3>Honeymoon Suite</h3>
+                        <p>Romantic luxury for two, featuring a private jacuzzi.</p>
+                        <a href="rooms.html" class="btn" style="background-color: var(--color-teal); color: var(--color-white); padding: 8px 20px; margin-top: 15px;">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" data-aos="fade-up">
+            <h2 class="section-title">What Our Guests Say</h2>
+            <div class="carousel">
+                <div class="testimonial-slide active">
+                    <p>"The most exquisite resort experience of my life. The service was impeccable and the views were breathtaking. A true retreat."</p>
+                    <div class="author">- Emily R., New York</div>
+                </div>
+                <div class="testimonial-slide">
+                    <p>"We celebrated our anniversary here and it was perfect. The Private Villa felt like our own island. Highly recommend the dining!"</p>
+                    <div class="author">- The Chen Family, London</div>
+                </div>
+                <div class="testimonial-slide">
+                    <p>"Paradise Retreat is aptly named. Pure luxury, tranquil atmosphere, and the staff made us feel like royalty. We will be back."</p>
+                    <div class="author">- Michael S., Sydney</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <a href="booking.html" class="floating-btn" title="Book Your Stay Now">
+        <i class="fas fa-calendar-alt"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Paradise Retreat</h4>
+                    <p>Your journey to relaxation begins here. Experience unparalleled luxury in the heart of the tropics.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="rooms.html">Rooms & Suites</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>123 Resort Blvd, Paradise Island</p>
+                    <p>Email: <a href="mailto:info@paradiseretreat.com">info@paradiseretreat.com</a></p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Paradise Retreat Resort. All Rights Reserved. | Designed with HTML, CSS & JS
+            </div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
